@@ -1,0 +1,17 @@
+#开发配置
+spring:
+  application:
+    name: project
+  datasource:
+    url: jdbc:mysql:replication://192.168.65.40:3306,192.168.65.40:3306/coca
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password:root
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: update
+    show-sql: true
+  jackson:
+      date-format: yyyy-MM-dd HH:mm:ss
+---

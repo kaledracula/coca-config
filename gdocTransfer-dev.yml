@@ -1,0 +1,29 @@
+#开发配置
+spring:
+  datasource:
+    continue-on-error: true
+    url: jdbc:mysql://127.0.0.1:3306/question_form
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: update
+    show-sql: true
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+      enabled: true
+    multipart:
+      max-file-size: 2000Mb
+      max-request-size: 2010Mb
+server:
+  tomcat:
+    uri-encoding: UTF-8
+---
+logging:
+  config: classpath:logback-spring.xml
+  file: gdocTransfer
+  path: D:/logs

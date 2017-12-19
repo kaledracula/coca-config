@@ -1,0 +1,39 @@
+#开发配置
+spring:
+  datasource:
+    continue-on-error: true
+    url: jdbc:mysql:replication://192.168.65.40:3306,192.168.65.40:3306/coca_basis
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5Dialect
+      ddl-auto: update
+    show-sql: true
+---
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: root
+    password: root
+    virtual-host: debug
+  cloud:
+    stream:
+      binders:
+        defaultMq:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: ${spring.rabbitmq.host}
+                port: ${spring.rabbitmq.port}
+                username: ${spring.rabbitmq.username}
+                password: ${spring.rabbitmq.password}
+                virtual-host: ${spring.rabbitmq.virtual-host}
+---
+logging:
+  config: classpath:logback-spring.xml
+  file: basis
+  path: D:/cocalog/basis/logs
